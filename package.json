@@ -47,7 +47,7 @@
   ],
   "author": "Filiosoft Labs <opensource@filiosoft.com>",
   "license": "MIT",
-  "description": "Fly.io API Client",
+  "description": "🎈 A Simple Fly.io API Client",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
