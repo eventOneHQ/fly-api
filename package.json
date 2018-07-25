@@ -1,5 +1,5 @@
 {
-  "name": "fly-api",
+  "name": "@filiosoft/fly",
   "version": "0.0.0-development",
   "main": "index.js",
   "repository": "Filiosoft/fly-api",
