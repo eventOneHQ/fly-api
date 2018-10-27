@@ -10,6 +10,7 @@
     "axios": "^0.18.0"
   },
   "devDependencies": {
+    "browserify": "^16.2.3",
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.2.0",
@@ -19,12 +20,16 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "jsdoc": "^3.5.5",
-    "prettier": "^1.13.5",
     "husky": "^0.14.3",
+    "jsdoc": "^3.5.5",
     "lint-staged": "^7.2.0",
+    "prettier": "^1.13.5",
     "semantic-release": "^15.8.1",
-    "travis-deploy-once": "^5.0.1"
+    "travis-deploy-once": "^5.0.1",
+    "tsify": "^4.0.0",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.1.1"
   },
   "scripts": {
     "test": "npm run lint",
@@ -37,7 +42,11 @@
     "cm": "git-cz",
     "pre-commit": "lint-staged",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once --pro"
+    "travis-deploy-once": "travis-deploy-once --pro",
+    "build:clean": "rimraf -rf dist && mkdirp dist",
+    "build:es6": "tsc -p tsconfig.dist.json",
+    "build:es5": "tsc -p tsconfig-es5.dist.json",
+    "build": "npm run build:clean && npm run build:es6 && npm run build:es5"
   },
   "keywords": [
     "fly.io",

@@ -1,11 +1,18 @@
-const axios = require('axios')
+import axios, { AxiosInstance } from 'axios'
+import FlyError from './error'
 
-class Fly {
+export default class Fly {
   /**
    * Create a Fly API Client
    * @param {string} apiKey Fly.io access token
    * @param {string} [resourceType=apps]    Site type (`apps` or `sites`)
    */
+  apiKey: string
+  resourceType: string
+  apiVersion: string
+  apiUrl: string
+
+  axios: AxiosInstance
   constructor (apiKey, resourceType = 'apps') {
     this.apiKey = apiKey
     this.resourceType = resourceType
@@ -25,16 +32,25 @@ class Fly {
    * @param {Error} err Error object
    */
   createError (err) {
-    const error = new Error(err)
+    console.log(err)
+    let name
+    let status
+    let message
     if (err.response) {
       if (err.response.status) {
-        error.status = err.response.status
+        status = err.response.status
+      }
+
+      if (err.response.name) {
+        name = err.response.name
       }
 
       if (err.response.data && err.response.data.errors) {
-        error.message = err.response.data.errors[0].title
+        message = err.response.data.errors[0].title
       }
     }
+
+    const error = new FlyError(name, message, status)
 
     throw error
   }
@@ -130,5 +146,3 @@ class Fly {
     }
   }
 }
-
-module.exports = Fly
