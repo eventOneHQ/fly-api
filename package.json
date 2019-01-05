@@ -2,7 +2,7 @@
   "name": "@filiosoft/fly",
   "version": "0.0.0-development",
   "main": "index.js",
-  "repository": "Filiosoft/fly-api",
+  "repository": "eventOneHQ/fly-api",
   "directories": {
     "lib": "lib"
   },
@@ -45,7 +45,7 @@
     "api",
     "client"
   ],
-  "author": "Filiosoft Labs <opensource@filiosoft.com>",
+  "author": "eventOne Labs <opensource@event1.io>",
   "license": "MIT",
   "description": "🎈 A Simple Fly.io API Client",
   "config": {
