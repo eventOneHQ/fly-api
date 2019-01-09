@@ -31,7 +31,7 @@ const fly = new Fly("your-access-token");
 const hostnames = await fly.getHostnames('name-of-site')
 ```
 
-You can find the full docs [here](https://oss.filiosoft.com/fly-api/Fly.html).
+You can find the full docs [here](https://oss.eventone.page/fly-api/Fly.html).
 
 ## License
 
