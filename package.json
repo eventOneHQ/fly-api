@@ -1,43 +1,29 @@
 {
   "name": "@filiosoft/fly",
   "version": "0.0.0-development",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "eventOneHQ/fly-api",
-  "directories": {
-    "lib": "lib"
-  },
   "dependencies": {
     "axios": "^0.18.0"
   },
   "devDependencies": {
-    "commitizen": "^4.0.3",
-    "cz-conventional-changelog": "^3.0.2",
-    "eslint": "^6.6.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "husky": "^3.0.9",
-    "jsdoc": "^3.6.3",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2",
     "semantic-release": "^15.13.28",
-    "travis-deploy-once": "^5.0.11"
+    "typedoc": "^0.15.0",
+    "typescript": "^3.2.4"
   },
   "scripts": {
-    "test": "npm run lint",
-    "format": "prettier --write '*.js' 'lib/**/*.js'",
-    "lint:report": "eslint . -f html -o out/eslint-report.html || true",
-    "lint": "npm run lint:report && eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint!": "npm run format && npm run lint:fix",
-    "docs": "jsdoc lib/ README.md",
-    "cm": "git-cz",
-    "pre-commit": "lint-staged",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once --pro"
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "docs": "typedoc --mode file --excludeExternals --excludeNotExported --out docs src",
+    "test": "",
+    "semantic-release": "semantic-release"
   },
+  "files": [
+    "dist/"
+  ],
   "keywords": [
     "fly.io",
     "fly",
@@ -46,16 +32,5 @@
   ],
   "author": "eventOne Labs <opensource@event1.io>",
   "license": "MIT",
-  "description": "🎈 A Simple Fly.io API Client",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "npm run lint!",
-      "git add"
-    ]
-  }
+  "description": "🎈 A Simple Fly.io API Client"
 }
