@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { FlyResponse, FlyHostname, FlyApp } from './definitions';
 
 export class Fly {
   private apiKey: string;
@@ -31,7 +32,7 @@ export class Fly {
    *
    * @returns Promise object represents the API response
    */
-  public async getHostnames(name: string) {
+  public async getHostnames(name: string): Promise<FlyResponse<FlyHostname>[]> {
     try {
       const res = await this.client.get(`/${name}/hostnames`);
       return res.data.data;
@@ -47,7 +48,10 @@ export class Fly {
    *
    * @returns Promise object represents the API response
    */
-  public async createHostname(name: string, hostname: string) {
+  public async createHostname(
+    name: string,
+    hostname: string
+  ): Promise<FlyResponse<FlyHostname>> {
     try {
       const data = {
         data: {
@@ -70,7 +74,10 @@ export class Fly {
    *
    * @returns Promise object represents the API response
    */
-  public async getHostname(name: string, hostname: string) {
+  public async getHostname(
+    name: string,
+    hostname: string
+  ): Promise<FlyResponse<FlyHostname>> {
     try {
       const res = await this.client.get(`/${name}/hostnames/${hostname}`);
       return res.data.data;
@@ -86,7 +93,10 @@ export class Fly {
    *
    * @returns Promise object represents the API response
    */
-  public async removeHostname(name: string, hostname: string) {
+  public async removeHostname(
+    name: string,
+    hostname: string
+  ): Promise<FlyResponse<FlyHostname>> {
     try {
       const res = await this.client.delete(`/${name}/hostnames/${hostname}`);
       return res.data.data;
@@ -95,7 +105,7 @@ export class Fly {
     }
   }
 
-  public async getApps() {
+  public async getApps(): Promise<FlyResponse<FlyApp[]>> {
     try {
       const res = await this.client.get('/');
       return res.data.data;
@@ -104,7 +114,7 @@ export class Fly {
     }
   }
 
-  public async getApp(name: string) {
+  public async getApp(name: string): Promise<FlyResponse<FlyApp>> {
     if (this.resourceType === 'sites') {
       throw new Error('Getting a single site is not supported');
     }
