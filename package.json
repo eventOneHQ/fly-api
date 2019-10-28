@@ -35,6 +35,7 @@
   "license": "MIT",
   "description": "🎈 A Simple Fly.io API Client",
   "release": {
+    "dryRun": true,
     "branches": [
       {
         "name": "master"
