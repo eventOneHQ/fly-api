@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "eventOneHQ/fly-api",
+  "access": "public",
   "dependencies": {
     "axios": "^0.18.0"
   },
