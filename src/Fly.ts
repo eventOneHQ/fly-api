@@ -1,29 +1,29 @@
-import axios, { AxiosInstance } from 'axios';
-import { FlyResponse, FlyHostname, FlyApp } from './definitions';
+import axios, { AxiosInstance } from 'axios'
+import { FlyResponse, FlyHostname, FlyApp } from './definitions'
 
 export class Fly {
-  private apiKey: string;
-  private resourceType: string;
-  private apiVersion: string;
-  private apiUrl: string;
+  private apiKey: string
+  private resourceType: string
+  private apiVersion: string
+  private apiUrl: string
 
-  private client: AxiosInstance;
+  private client: AxiosInstance
   /**
    * Create a Fly API Client
    * @param apiKey Fly.io access token
    * @param [resourceType=apps] Site type (`apps` or `sites`)
    */
   constructor(apiKey: string, resourceType = 'apps') {
-    this.apiKey = apiKey;
-    this.resourceType = resourceType;
+    this.apiKey = apiKey
+    this.resourceType = resourceType
 
-    this.apiVersion = 'v1';
-    this.apiUrl = `https://fly.io/api/${this.apiVersion}/${this.resourceType}`;
+    this.apiVersion = 'v1'
+    this.apiUrl = `https://fly.io/api/${this.apiVersion}/${this.resourceType}`
 
     this.client = axios.create({
       baseURL: this.apiUrl,
       headers: { Authorization: `Bearer ${this.apiKey}` }
-    });
+    })
   }
 
   /**
@@ -34,10 +34,10 @@ export class Fly {
    */
   public async getHostnames(name: string): Promise<FlyResponse<FlyHostname>[]> {
     try {
-      const res = await this.client.get(`/${name}/hostnames`);
-      return res.data.data;
+      const res = await this.client.get(`/${name}/hostnames`)
+      return res.data.data
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
@@ -59,11 +59,11 @@ export class Fly {
             hostname: hostname
           }
         }
-      };
-      const res = await this.client.post(`/${name}/hostnames`, data);
-      return res.data.data;
+      }
+      const res = await this.client.post(`/${name}/hostnames`, data)
+      return res.data.data
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
@@ -79,10 +79,10 @@ export class Fly {
     hostname: string
   ): Promise<FlyResponse<FlyHostname>> {
     try {
-      const res = await this.client.get(`/${name}/hostnames/${hostname}`);
-      return res.data.data;
+      const res = await this.client.get(`/${name}/hostnames/${hostname}`)
+      return res.data.data
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
@@ -98,31 +98,31 @@ export class Fly {
     hostname: string
   ): Promise<FlyResponse<FlyHostname>> {
     try {
-      const res = await this.client.delete(`/${name}/hostnames/${hostname}`);
-      return res.data.data;
+      const res = await this.client.delete(`/${name}/hostnames/${hostname}`)
+      return res.data.data
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
   public async getApps(): Promise<FlyResponse<FlyApp[]>> {
     try {
-      const res = await this.client.get('/');
-      return res.data.data;
+      const res = await this.client.get('/')
+      return res.data.data
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 
   public async getApp(name: string): Promise<FlyResponse<FlyApp>> {
     if (this.resourceType === 'sites') {
-      throw new Error('Getting a single site is not supported');
+      throw new Error('Getting a single site is not supported')
     }
     try {
-      const res = await this.client.get(`/${name}`);
-      return res.data.data;
+      const res = await this.client.get(`/${name}`)
+      return res.data.data
     } catch (err) {
-      throw err;
+      throw err
     }
   }
 }

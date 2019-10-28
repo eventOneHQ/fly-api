@@ -1,9 +1,9 @@
-const { Fly } = require('./dist/index');
+const { Fly } = require('./dist/index')
 
-const fly = new Fly(process.env.FLY_KEY);
+const fly = new Fly(process.env.FLY_KEY)
 
-(async () => {
-  const apps = await fly.getApps();
+;(async () => {
+  const apps = await fly.getApps()
 
-  console.log(apps);
-})();
+  console.log(apps)
+})()

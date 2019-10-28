@@ -24,11 +24,11 @@ npm install @filiosoft/fly
 ### Use
 
 ```javascript
-const { Fly } = require('@filiosoft/fly');
+const { Fly } = require('@filiosoft/fly')
 
-const fly = new Fly('your-access-token');
+const fly = new Fly('your-access-token')
 
-const hostnames = await fly.getHostnames('name-of-site');
+const hostnames = await fly.getHostnames('name-of-site')
 ```
 
 You can find the full docs [here](https://oss.eventone.page/fly-api/).
