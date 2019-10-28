@@ -4,7 +4,6 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "eventOneHQ/fly-api",
-  "access": "public",
   "dependencies": {
     "axios": "^0.18.0"
   },
@@ -34,6 +33,9 @@
   "author": "eventOne Labs <opensource@event1.io>",
   "license": "MIT",
   "description": "🎈 A Simple Fly.io API Client",
+  "publishConfig": {
+    "access": "public"
+  },
   "release": {
     "branches": [
       {
