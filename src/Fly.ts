@@ -47,7 +47,7 @@ export class Fly {
    *
    * @returns Promise object represents the API response
    */
-  public async postHostname(name: string, hostname: string) {
+  public async createHostname(name: string, hostname: string) {
     try {
       const data = {
         data: {
@@ -80,13 +80,13 @@ export class Fly {
   }
 
   /**
-   * Delete a site hostname
+   * Remove a site hostname
    * @param name Name of the site
-   * @param hostname Hostname to delete
+   * @param hostname Hostname to remove
    *
    * @returns Promise object represents the API response
    */
-  public async deleteHostname(name: string, hostname: string) {
+  public async removeHostname(name: string, hostname: string) {
     try {
       const res = await this.client.delete(`/${name}/hostnames/${hostname}`);
       return res.data.data;
