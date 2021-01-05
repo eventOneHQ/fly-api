@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "repository": "eventOneHQ/fly-api",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "semantic-release": "^16.0.0-beta.26",
