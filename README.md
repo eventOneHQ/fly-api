@@ -1,3 +1,9 @@
+# PROJECT DEPRECATED
+
+As of 2020-01-19, this project is deprecated. eventOne no longer uses [Fly.io](https://fly.io) so this project hasn't been maintained for over a year. If you would like to take over maintenance of it, please email opensource@event1.io. 
+
+<hr>
+<br>
 <h1 align="center">Fly.io API Client</h1>
 
 <p align="center">
